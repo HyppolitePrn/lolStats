@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+from datetime import datetime
 
 # Load environment variables
 load_dotenv()
@@ -25,8 +26,14 @@ REGION_MAP = {
 }
 
 # Excel config
-DEFAULT_EXCEL_PATH = "tournament_stats.xlsx"
+DEFAULT_EXCEL_PATH = f"tournament_stats_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx"
 SHEET_NAME = "Tournament Stats"
+
+# Column headers for Excel
+EXCEL_HEADERS = [
+    "Summoner Name", "Champion", "Position", "K/D/A", "KDA Ratio", 
+    "DPM", "VPM", "CS/min", "Gold Diff@15", "Exp Diff@15", "Solo Kills", "KP", "Win"
+]
 
 # Colors for Excel
 COLORS = {
@@ -36,3 +43,7 @@ COLORS = {
     "win": "C6EFCE",
     "loss": "FFC7CE"
 }
+
+# Logging config
+LOG_FILE = "lol_tournament_stats.log"
+LOG_LEVEL = "DEBUG"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
